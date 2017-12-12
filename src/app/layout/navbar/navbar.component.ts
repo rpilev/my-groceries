@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
 
 declare const $: any;
 
@@ -9,13 +10,17 @@ declare const $: any;
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   hideNavbar() {
     $(".navbar-collapse").collapse('hide');
+  }
+
+  onSignOut() {
+    this.authService.signOutUser();
   }
 
 }

@@ -1,0 +1,12 @@
+.sign-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.error-message {
+  text-align: center;
+}
+
+.ng-invalid.ng-touched {
+  border-color: red;
+}
