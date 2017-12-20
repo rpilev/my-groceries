@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   error = new Subject<string>();
-  token = null;
+  token = '123';
 
   constructor(private router: Router) { }
 
@@ -29,7 +29,12 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         success => {
-          this.token = firebase.auth().currentUser.getToken();
+          firebase.auth().currentUser.getToken().then(
+            token => {
+              this.token = token;
+              console.log(this.token);
+            }
+          );
           this.router.navigate(['groceries']);
         }
       )

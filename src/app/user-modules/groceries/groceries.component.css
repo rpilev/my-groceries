@@ -1,0 +1,54 @@
+.groceries-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grocery-checkout {
+  color: green;
+}
+
+.grocery-edit {
+  color: blue;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.inner-overlay{
+  display: block;
+  margin: 50px auto 0 auto;
+  background-color: #fff;
+  border: 1px solid black;
+  max-width: 400px;
+  padding: 35px;
+}
+
+.quantity{
+  width: 80px;
+}
+
+.overlay-close {
+  margin-left: auto;
+  display: block;
+  width: 15px;
+  cursor: pointer;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.overlay-hide {
+  display: none;
+}
+
+.inner-overlay h2 {
+  margin-top: 3px;
+}

@@ -14,6 +14,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 
+import { GroceriesService } from './user-modules/groceries/groceries.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { AuthGuard } from './auth/auth-guard.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, GroceriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
