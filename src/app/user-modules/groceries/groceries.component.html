@@ -1,7 +1,7 @@
 <div id="overlay" (click)="$event.target.id === 'overlay' ? toggleOverlay() : ''" [@overlay_animation]='overlay_hidden' class="overlay">
   <div [@overlay_inner_animation]='overlay_hidden' class="inner-overlay">
     <span (click)="toggleOverlay()" class="overlay-close">X</span>
-    <h2>{{mode}} a grovery item:</h2>
+    <h2>{{mode | capitalizeFirst}} a grovery item:</h2>
     <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
       <div class="form-group">
         <label for="name">Name:</label>

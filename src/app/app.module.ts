@@ -15,6 +15,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 
+import { CapitalizeFirst } from './pipes/capitalizefirst.pipe';
+
 import { GroceriesService } from './user-modules/groceries/groceries.service';
 
 @NgModule({
@@ -24,7 +26,8 @@ import { GroceriesService } from './user-modules/groceries/groceries.service';
     SigninComponent,
     SignupComponent,
     GroceriesComponent,
-    MainPageComponent
+    MainPageComponent,
+    CapitalizeFirst
   ],
   imports: [
     BrowserModule,
