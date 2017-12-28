@@ -10,21 +10,18 @@ import { Grocery } from './grocery.model';
   styleUrls: ['./groceries.component.css'],
   animations: [
     trigger('grocery_animation', [
-      transition('* -> void', animate( 500, 
+      transition('* -> void', animate( 0, 
         style({
-          opacity: 0,
-          transform: 'translateX(100px)'
+          opacity: 0
         }))
       ),
       transition('void -> *', [
         style({
           opacity: 0,
-          transform: 'translateX(100px)',
         }),
         animate( 500, 
           style({
             opacity: 1,
-            transform: 'translateX(0)'
           })
         )]
       ),
@@ -49,12 +46,6 @@ import { Grocery } from './grocery.model';
     ),
     trigger('overlay_inner_animation',
       [
-        state('1', style({
-          transform: 'scale(0.5)'
-        })),
-        state('0', style({
-          transform: 'scale(1)'
-        })),
         transition('0 => 1', [
           animate('250ms')
         ]),
@@ -76,8 +67,10 @@ export class GroceriesComponent implements OnInit {
 
   ngOnInit() {
     this.groceries = this.groceriesService.getGroceries();
+    this.groceriesService.setUpGroceriesListner();
     this.groceriesService.groceriesChanged.subscribe(
       groceries => {
+        this.overlay_hidden = true;
         this.groceries = groceries;
       }
     );
@@ -87,12 +80,8 @@ export class GroceriesComponent implements OnInit {
     this.groceriesService.checkoutGrocery(index);
   }
 
-  toggleOverlay() {
-    this.overlay_hidden = !this.overlay_hidden;
-  }
-
   prepareOverlay(index: number, name: string, quantity: number) {
-
+    this.overlay_hidden = false;
     if(this.mode === 'edit') {
       this.form.controls.name.setValue(name);
       this.form.controls.quantity.setValue(quantity);
@@ -104,15 +93,16 @@ export class GroceriesComponent implements OnInit {
   }
 
   onFormSubmit() {
-
     let grocery = new Grocery(this.form.value.name, this.form.value.quantity);
 
     if(this.mode === 'edit') {
       this.groceriesService.editGrocery(this.form.value.index, grocery);
+      this.overlay_hidden = true;
     } else if (this.mode === 'add') {
       this.groceriesService.addGrocery(grocery);
+      this.overlay_hidden = true;
     }
-    this.toggleOverlay();
+    this.overlay_hidden = true;
   }
 
 }

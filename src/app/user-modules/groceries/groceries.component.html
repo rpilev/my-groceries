@@ -1,6 +1,6 @@
-<div id="overlay" (click)="$event.target.id === 'overlay' ? toggleOverlay() : ''" [@overlay_animation]='overlay_hidden' class="overlay">
+<div id="overlay" (click)="$event.target.id === 'overlay' ? this.overlay_hidden = true : ''" [@overlay_animation]='overlay_hidden' class="overlay">
   <div [@overlay_inner_animation]='overlay_hidden' class="inner-overlay">
-    <span (click)="toggleOverlay()" class="overlay-close">X</span>
+    <span (click)="this.overlay_hidden = true" class="overlay-close">X</span>
     <h2>{{mode | capitalizeFirst}} a grovery item:</h2>
     <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
       <div class="form-group">
@@ -40,13 +40,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let grocery of groceries; let i = index"[@grocery_animation]>
+      <tr *ngFor="let grocery of groceries; let i = index" [@grocery_animation]>
         <td>{{ grocery.name }}</td>
         <td>{{ grocery.quantity }}</td>
-        <td><i (click)="mode = 'edit';toggleOverlay(); prepareOverlay(i, grocery.name, grocery.quantity)" class="fa fa-pencil-square-o grocery-edit" aria-hidden="true"></i></td>
+        <td><i (click)="mode = 'edit'; prepareOverlay(i, grocery.name, grocery.quantity)" class="fa fa-pencil-square-o grocery-edit" aria-hidden="true"></i></td>
         <td><i class="fa fa-check grocery-checkout" aria-hidden="true" (click)="onCheckout(i)"></i></td>
       </tr>
     </tbody>
   </table>
-  <button (click)="mode = 'add';toggleOverlay(); prepareOverlay()" type="button" class="btn btn-success">Add Grocery</button>
+  <button (click)="mode = 'add'; prepareOverlay()" type="button" class="btn btn-success">Add Grocery</button>
 </div>
