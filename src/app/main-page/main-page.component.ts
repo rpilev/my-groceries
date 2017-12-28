@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    if(this.authService.token === null) {
+      this.message = 'Welcome! Please sign in to see your groceries.';
+    } else {
+      this.message = "You are signed in. Go to the grocieris tab to see what you've got.";
+    }
   }
 
 }

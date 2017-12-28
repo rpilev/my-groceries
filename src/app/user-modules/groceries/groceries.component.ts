@@ -80,7 +80,7 @@ export class GroceriesComponent implements OnInit {
     this.groceriesService.checkoutGrocery(index);
   }
 
-  prepareOverlay(index: number, name: string, quantity: number) {
+  prepareOverlay(index: number = null, name: string = null, quantity: number = null) {
     this.overlay_hidden = false;
     if(this.mode === 'edit') {
       this.form.controls.name.setValue(name);

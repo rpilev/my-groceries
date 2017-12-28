@@ -2,7 +2,7 @@
   <div [@overlay_inner_animation]='overlay_hidden' class="inner-overlay">
     <span (click)="this.overlay_hidden = true" class="overlay-close">X</span>
     <h2>{{mode | capitalizeFirst}} a grovery item:</h2>
-    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
       <div class="form-group">
         <label for="name">Name:</label>
         <input
